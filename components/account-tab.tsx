@@ -176,7 +176,7 @@ export function AccountTab() {
           <div className="flex justify-end mt-8">
             <Button
               type="submit"
-              className="bg-primary text-primary-foreground px-6 py-2 rounded-lg hover:bg-primary/90 flex items-center gap-2"
+              className="bg-blue-600 text-white hover:bg-blue-700 flex items-center gap-2"
             >
               <span>💾</span>
               Save Changes
