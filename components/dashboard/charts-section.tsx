@@ -110,7 +110,7 @@ export default function ChartsSection() {
                 <Tooltip 
                   contentStyle={isDarkMode ? { 
                     backgroundColor: '#1e293b', 
-                    borderColor: '#334155',
+                    border: '1px solid #334155',
                     color: '#ffffff'
                   } : {}} 
                 />
@@ -144,7 +144,7 @@ export default function ChartsSection() {
                 <Tooltip 
                   contentStyle={isDarkMode ? { 
                     backgroundColor: '#1e293b', 
-                    borderColor: '#334155',
+                    border: '1px solid #334155',
                     color: '#ffffff'
                   } : {}} 
                 />

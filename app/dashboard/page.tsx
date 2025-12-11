@@ -1,14 +1,14 @@
 'use client'
 
-import Sidebar from '@/components/sidebar'
-import Header from '@/components/header'
-import StatsCards from '@/components/stats-cards'
-import MetricsOverview from '@/components/metrics-overview'
-import ChartsSection from '@/components/charts-section'
-import RecentDeals from '@/components/recent-deals'
-import PipelineOverview from '@/components/pipeline-overview'
-import UpcomingActivities from '@/components/upcoming-activities'
-import LeadSourceBreakdown from '@/components/lead-source-breakdown'
+import Sidebar from '@/components/ui/sidebar'
+import Header from '@/components/ui/header'
+import StatsCards from '@/components/dashboard/stats-cards'
+import MetricsOverview from '@/components/dashboard/metrics-overview'
+import ChartsSection from '@/components/dashboard/charts-section'
+import RecentDeals from '@/components/dashboard/recent-deals'
+import PipelineOverview from '@/components/dashboard/pipeline-overview'
+import UpcomingActivities from '@/components/dashboard/upcoming-activities'
+import LeadSourceBreakdown from '@/components/dashboard/lead-source-breakdown'
 
 export default function Dashboard() {
   return (
@@ -17,7 +17,7 @@ export default function Dashboard() {
       <Sidebar />
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden ml-64">
         {/* Header */}
         <Header />
 

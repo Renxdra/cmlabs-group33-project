@@ -1,9 +1,9 @@
 "use client"
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/tabs"
-import { ProfileCard } from "@/components/profile-card"
-import { ProfileTab } from "@/components/profile-tab"
-import { AccountTab } from "@/components/account-tab"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { ProfileCard } from "@/components/profile/profile-card"
+import { ProfileTab } from "@/components/profile/profile-tab"
+import { AccountTab } from "@/components/profile/account-tab"
 
 export function ProfileContent() {
 

@@ -1,9 +1,23 @@
 'use client'
 
-import { Moon, Sun } from 'lucide-react'
+import { Sun, Moon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
 import { Button } from './button'
+
+// Custom Crescent Icon Component (proper crescent shape)
+const CrescentIcon = ({ size = 18, className = "" }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+  >
+    <path d="M12 3a9 9 0 1 0 9 9c0-.46-.02-.92-.05-1.37a7 7 0 1 1-7.58-7.58c.45-.03.91-.05 1.37-.05z" />
+  </svg>
+)
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
@@ -16,8 +30,7 @@ export function ThemeToggle() {
       aria-label="Toggle theme"
       className="rounded-lg hover:bg-muted transition-colors"
     >
-      <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      {theme === 'dark' ? <Sun className="h-5 w-5" /> : <CrescentIcon className="h-5 w-5" />}
     </Button>
   )
 }
