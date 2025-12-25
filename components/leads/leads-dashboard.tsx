@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { 
   Plus, MoreHorizontal, FileText, UserCircle, Wand2,
-  CheckSquare, Archive, Filter, ChevronLeft, ChevronRight, ChevronDown
+  CheckSquare, Archive, Filter, ChevronDown
 } from 'lucide-react';
 import Link from 'next/link';
+import CustomScrollBar from './custom-scroll-bar';
+import DropZoneArea from './drop-zone-area';
 
 // --- 1. TYPES & INTERFACES ---
 type Priority = 'High Priority' | 'Medium Priority' | 'Low Priority';
@@ -80,20 +82,12 @@ const initialData: BoardData = {
   },
 };
 
-// --- 3. COMPONENTS ---
 
-// Component: Bottom Drop Zone (Visual)
-function DropZoneArea({ label }: { label: string }) {
-    return (
-        <div className="h-16 border-2 border-dashed border-gray-400 dark:border-gray-600 rounded-xl flex items-center justify-center bg-gray-50 dark:bg-gray-800/50">
-            <span className="text-gray-500 dark:text-gray-400 font-bold tracking-widest">{label}</span>
-        </div>
-    )
-}
-
-// --- 4. MAIN COMPONENT LOGIC ---
 export default function LeadsDashboard() {
   const [boardData] = useState<BoardData>(initialData);
+  
+
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <div className="space-y-6 h-full flex flex-col">
@@ -133,18 +127,16 @@ export default function LeadsDashboard() {
               </button>
           </div>
           
-          {/* Scroll Indicator */}
-          <div className="flex items-center gap-2 flex-1 mx-8 max-w-md ml-auto">
-               <button className="w-8 h-8 flex items-center justify-center rounded-full bg-muted shadow-sm hover:bg-accent"><ChevronLeft size={16}/></button>
-               <div className="h-2 bg-muted rounded-full flex-1 overflow-hidden">
-                  <div className="h-full w-1/3 bg-primary rounded-full"></div>
-               </div>
-               <button className="w-8 h-8 flex items-center justify-center rounded-full bg-muted shadow-sm hover:bg-accent"><ChevronRight size={16}/></button>
-          </div>
+          {/* CUSTOM SCROLL CONTROLLER */}
+          <CustomScrollBar scrollContainerRef={scrollContainerRef} />
       </div>
 
       {/* KANBAN BOARD AREA - WITHOUT DRAG AND DROP */}
-      <div className="flex gap-4 h-full overflow-x-auto pb-4 custom-scrollbar">
+      <div 
+        ref={scrollContainerRef}
+        className="flex gap-4 h-full overflow-x-auto pb-4 scroll-smooth hide-scrollbar"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
         {Object.values(boardData).map((column) => (
           <div key={column.id} className="min-w-[280px] w-80 flex flex-col h-full bg-transparent shrink-0">
             {/* Column Header */}
