@@ -3,7 +3,7 @@
 import React from 'react'
 import Sidebar from '@/components/ui/sidebar'
 import Header from '@/components/ui/header'
-import LeadsDashboard from '@/components/dashboard/leads-dashboard'
+import LeadsDashboard from '@/components/leads/leads-dashboard'
 
 export default function LeadsPage() {
   return (

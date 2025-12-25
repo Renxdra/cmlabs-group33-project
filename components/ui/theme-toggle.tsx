@@ -2,6 +2,7 @@
 
 import { Sun, Moon } from 'lucide-react'
 import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 
 import { Button } from './button'
 
@@ -21,6 +22,27 @@ const CrescentIcon = ({ size = 18, className = "" }) => (
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  // Mark component as mounted after client-side hydration
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Return null during server-side rendering or initial client render
+  if (!mounted) {
+    return (
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        aria-label="Toggle theme"
+        className="rounded-lg hover:bg-muted transition-colors"
+      >
+        <Sun className="h-5 w-5" />
+      </Button>
+    )
+  }
 
   return (
     <Button
